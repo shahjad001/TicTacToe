@@ -1,0 +1,133 @@
+/* ===== PAGE BACKGROUND ===== */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== TITLE ===== */
+.title {
+  margin-top: 30px;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+#status {
+  color: #f5f5f5;
+  font-size: 18px;
+}
+
+/* ===== BOARD ===== */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 110px);
+  gap: 15px;
+  margin: 30px 0;
+  perspective: 800px; /* enables 3D */
+}
+
+/* ===== CELL (3D BOX) ===== */
+.cell {
+  width: 110px;
+  height: 110px;
+  background: linear-gradient(145deg, #ffffff, #dcdcdc);
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 42px;
+  font-weight: bold;
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 15px rgba(0, 0, 0, 0.35),
+    inset 0 2px 4px rgba(255, 255, 255, 0.7);
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Hover lift */
+.cell:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 14px 25px rgba(0, 0, 0, 0.45),
+    inset 0 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+/* Pressed effect */
+.cell:active {
+  transform: translateY(2px);
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.35),
+    inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* X and O colors */
+.cell:not(:empty) {
+  cursor: not-allowed;
+}
+
+.cell:contains("X") {
+  color: #ff4757;
+}
+
+.cell:contains("O") {
+  color: #1e90ff;
+}
+
+/* ===== RESET BUTTON ===== */
+button {
+  padding: 12px 22px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(145deg, #222, #000);
+  color: #fff;
+
+  box-shadow:
+    0 6px 0 #111,
+    0 10px 20px rgba(0, 0, 0, 0.5);
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:active {
+  transform: translateY(4px);
+  box-shadow:
+    0 2px 0 #111,
+    0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Celebration message */
+.message {
+  font-size: 26px;
+  font-weight: bold;
+  color: #ffeaa7;
+  margin-top: 15px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.4s ease;
+}
+
+.message.show {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Winning cells highlight */
+.cell.win {
+  background: linear-gradient(145deg, #2ecc71, #27ae60);
+  color: #fff;
+  box-shadow:
+    0 0 20px rgba(46, 204, 113, 0.9),
+    inset 0 2px 4px rgba(255,255,255,0.6);
+}
